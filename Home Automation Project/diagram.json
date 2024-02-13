@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 6.6, "left": -16.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 48, "left": -196.76, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -76.04, "left": -76.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 86.4, "left": -58.2, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -197.99,
+      "left": 38.83,
+      "attrs": { "size": "17" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 0.2, "left": 345.6, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -32.4,
+      "left": 522.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 246.2,
+      "left": -48,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 246.2,
+      "left": 134.4,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "vcc1:VCC", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "gnd1:GND", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "stepper1:A-", "bb1:11t.b", "green", [ "v0" ] ],
+    [ "stepper1:A+", "bb1:12t.b", "green", [ "v0" ] ],
+    [ "stepper1:B+", "bb1:13t.b", "green", [ "v0" ] ],
+    [ "stepper1:B-", "bb1:14t.b", "green", [ "v0" ] ],
+    [ "bb1:11t.c", "esp:17", "green", [ "v0" ] ],
+    [ "bb1:12t.c", "esp:5", "green", [ "v0" ] ],
+    [ "bb1:13t.c", "esp:18", "green", [ "v0" ] ],
+    [ "bb1:14t.c", "esp:19", "green", [ "v0" ] ],
+    [ "relay1:VCC", "bb1:tp.23", "red", [ "h-19.2", "v-38.4", "h-57.6" ] ],
+    [ "relay1:GND", "bb1:tn.25", "black", [ "h0" ] ],
+    [ "esp:12", "relay1:IN", "gold", [ "v0", "h-67.05", "v153.6", "h662.4" ] ],
+    [ "led1:C", "bb1:tn.21", "black", [ "v0", "h-47.6", "v-115.2", "h-249.6" ] ],
+    [ "led1:A", "relay1:NO", "orange", [ "v38.4" ] ],
+    [ "relay1:COM", "bb1:tp.24", "red", [ "h-8.4", "v-97.4", "h-172.8" ] ],
+    [ "btn1:1.r", "bb1:bn.7", "black", [ "v0", "h67.4", "v-57.6" ] ],
+    [ "btn1:2.l", "esp:14", "magenta", [ "h-201.6", "v0.2" ] ],
+    [ "btn2:1.r", "bb1:bp.19", "black", [ "v-9.6", "h29" ] ],
+    [ "btn2:2.l", "esp:25", "purple", [ "h-96", "v38.6", "h-316.8", "v-153.6" ] ]
+  ],
+  "dependencies": {}
+}
